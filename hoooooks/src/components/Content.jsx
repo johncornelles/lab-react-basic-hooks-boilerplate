@@ -5,7 +5,7 @@ function Content() {
     const [count, setCount] = useState(0);
     const [showContent, changeShowContent] = useState(false);
     const { darkTheme, toggleTheme } = useContext(MyContext);
-
+    const [initialRender, setinitialRender] = useState(true)
     const themeStyle = {
         backgroundColor: darkTheme ? 'black' : 'white',
         color: darkTheme ? 'white' : 'black',
@@ -14,7 +14,8 @@ function Content() {
     };
 
     useEffect(() => {
-            alert(`Let me ${showContent ? 'show' : 'hide'} it, please wait!`);
+            if(!initialRender) alert(`Let me ${showContent ? 'show' : 'hide'} it, please wait!`);
+            else setinitialRender(false)
     }, [showContent]);
 
     return (
